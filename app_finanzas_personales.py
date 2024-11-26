@@ -54,7 +54,7 @@ def main():
 def inicio():
     st.markdown("<h1 style='text-align: center; color: #4CAF50;'>Bienvenido a Finanzas Personales Pro</h1>", unsafe_allow_html=True)
     st.write("Esta app te ayudará a organizar tus finanzas, aprender a ahorrar y conocer opciones de inversión.")
-    st.sidebar.image("Imagen1.png", width=150)
+    st.image("Imagen1.png", width=500)
     st.write("### ¿Listo para empezar? 🚀 Completa tus datos personales y ve al siguiente paso.")
 
     with st.form("form_datos_personales"):
