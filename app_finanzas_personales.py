@@ -40,7 +40,7 @@ def main():
     st.set_page_config(page_title="Finanzas Personales Pro", layout="wide")
     estilo_app()  # Aplicar el estilo
 
-    st.sidebar.image("https://i.imgur.com/LkB4HAA.png", use_column_width=True)
+    st.sidebar.image("Imagen1.png", use_column_width=True)
     st.sidebar.title("Navegación")
     pages = {
         "🏠 Inicio": inicio,
@@ -54,7 +54,7 @@ def main():
 def inicio():
     st.markdown("<h1 style='text-align: center; color: #4CAF50;'>Bienvenido a Finanzas Personales Pro</h1>", unsafe_allow_html=True)
     st.write("Esta app te ayudará a organizar tus finanzas, aprender a ahorrar y conocer opciones de inversión.")
-    st.image("https://i.imgur.com/jZyBw7H.png", use_column_width=True)
+    st.image("Imagen1.png", use_column_width=True)
     st.write("### ¿Listo para empezar? 🚀 Completa tus datos personales y ve al siguiente paso.")
 
     with st.form("form_datos_personales"):
