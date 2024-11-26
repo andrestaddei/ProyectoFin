@@ -188,10 +188,10 @@ def planeacion_financiera():
     valores_futuros = [excedente * ((1 + tasa / 12) ** i) for i in range(1, meses + 1)]
     valuesfu = excedente * ((1 + tasa / 12) ** meses)
 
-    st.markdown(f"<h3>Si inviertes tu excedente de {excedente} pesos en {etf_seleccionado} por {meses} meses, tendrías: {valuesfu:.2f} pesos.</h3>", unsafe_allow_html=True)
+    st.markdown(f"<h3>Si inviertes tu excedente de {excedente} pesos en {etf_seleccionado} por {meses} meses, tendrías: {valuesfu:.2f} pesos*.</h3>", unsafe_allow_html=True)
     st.markdown(
     """
-    *Esto en base a los datos históricos del ETF
+    *En base a los datos históricos del ETF
     """
 )
     # Gráfica de proyección
