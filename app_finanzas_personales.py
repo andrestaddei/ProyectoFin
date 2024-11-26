@@ -40,8 +40,8 @@ def main():
     st.set_page_config(page_title="Finanzas Personales Pro", layout="wide")
     estilo_app()  # Aplicar el estilo
 
-st.sidebar.image("Imagen1.png", width=150)
-st.sidebar.title("Navegación")
+    st.sidebar.image("Imagen1.png", width=150)
+    st.sidebar.title("Navegación")
     pages = {
         "🏠 Inicio": inicio,
         "💰 Datos Financieros": datos_financieros,
