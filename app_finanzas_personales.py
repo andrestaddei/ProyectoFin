@@ -191,14 +191,13 @@ def planeacion_financiera():
         excedente * ((1 + tasa_mensual) ** i - 1) / tasa_mensual for i in range(1, meses + 1)
     ]
 
-    # Creación de la tabla con formato mejorado
-    tabla_resultados = pd.DataFrame({
-        "Mes": range(1, meses + 1),
-        "Valor Futuro (MXN)": [f"${vf:,.2f}" for vf in valores_futuros_anualidad]
-    })
+    # Creación de la tabla con formato horizontal
+    tabla_resultados = pd.DataFrame([valores_futuros_anualidad], columns=range(1, meses + 1))
+    tabla_resultados.index = ["Valor Futuro (MXN)"]
+    tabla_resultados = tabla_resultados.applymap(lambda x: f"${x:,.2f}")
 
     # Mostrar tabla en Streamlit
-    st.write("### Crecimiento de la inversión por anualidades vencidas")
+    st.write("### Crecimiento de la inversión por anualidades vencidas (Horizontal)")
     st.markdown("""
     <style>
         .dataframe {
@@ -219,7 +218,7 @@ def planeacion_financiera():
     </style>
     """, unsafe_allow_html=True)
 
-    st.write(tabla_resultados.to_html(index=False, justify="center"), unsafe_allow_html=True)
+    st.write(tabla_resultados.to_html(index=True, justify="center"), unsafe_allow_html=True)
 
     # Gráfica de crecimiento
     plt.figure(figsize=(10, 6))
@@ -229,7 +228,6 @@ def planeacion_financiera():
     plt.ylabel("Valor Futuro (MXN)", fontsize=12)
     plt.grid(True, linestyle="--", alpha=0.7)
     st.pyplot(plt)
-
     # Planeación de proyectos personales
     st.write("### Planeación de Proyectos Personales")
     st.markdown(
