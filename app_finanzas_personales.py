@@ -180,8 +180,6 @@ def planeacion_financiera():
     st.write(f"**Rentabilidad anual estimada:** {retorno_anual:.2f}%")
     st.write(f"**Volatilidad (riesgo) anualizada:** {volatilidad:.2f}%")
 
-    
-
     # Simulación de inversión con anualidades vencidas
     meses = st.slider("Plazo de inversión (meses):", 1, 36, 12)
     tasa_mensual = retorno_anual / 100 / 12
@@ -196,12 +194,18 @@ def planeacion_financiera():
     tabla_resultados.index = ["Valor Futuro (MXN)"]
     tabla_resultados = tabla_resultados.applymap(lambda x: f"${x:,.2f}")
 
-    # Mostrar tabla en Streamlit
+    # Mostrar tabla en Streamlit con desplazamiento horizontal
     st.write("### Crecimiento de la inversión por anualidades vencidas (Horizontal)")
     st.markdown("""
     <style>
+        .scrollable-table {
+            overflow-x: auto;
+            display: block;
+            width: 100%;
+            max-width: 700px; /* Igual que el ancho del gráfico */
+            margin: auto;
+        }
         .dataframe {
-            margin: 20px auto;
             text-align: center;
             font-size: 16px;
         }
@@ -218,7 +222,14 @@ def planeacion_financiera():
     </style>
     """, unsafe_allow_html=True)
 
-    st.write(tabla_resultados.to_html(index=True, justify="center"), unsafe_allow_html=True)
+    st.markdown(
+        f"""
+        <div class="scrollable-table">
+            {tabla_resultados.to_html(index=True, justify="center")}
+        </div>
+        """,
+        unsafe_allow_html=True,
+    )
 
     # Gráfica de crecimiento
     plt.figure(figsize=(10, 6))
@@ -228,6 +239,7 @@ def planeacion_financiera():
     plt.ylabel("Valor Futuro (MXN)", fontsize=12)
     plt.grid(True, linestyle="--", alpha=0.7)
     st.pyplot(plt)
+
     # Planeación de proyectos personales
     st.write("### Planeación de Proyectos Personales")
     st.markdown(
