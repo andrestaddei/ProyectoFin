@@ -183,32 +183,32 @@ def planeacion_financiera():
     
 
     # Simulación de inversión con anualidades vencidas
-meses = st.slider("Plazo de inversión (meses):", 1, 36, 12)
-tasa_mensual = retorno_anual / 100 / 12
+    meses = st.slider("Plazo de inversión (meses):", 1, 36, 12)
+    tasa_mensual = retorno_anual / 100 / 12
 
-# Cálculo del crecimiento de la inversión
-valores_futuros_anualidad = [
-    excedente * ((1 + tasa_mensual) ** i - 1) / tasa_mensual for i in range(1, meses + 1)
-]
+    # Cálculo del crecimiento de la inversión
+    valores_futuros_anualidad = [
+        excedente * ((1 + tasa_mensual) ** i - 1) / tasa_mensual for i in range(1, meses + 1)
+    ]
 
-# Creación de la tabla
-tabla_resultados = pd.DataFrame({
-    "Mes": range(1, meses + 1),
-    "Valor Futuro (MXN)": [f"{vf:.2f}" for vf in valores_futuros_anualidad]
-})
+    # Creación de la tabla
+    tabla_resultados = pd.DataFrame({
+        "Mes": range(1, meses + 1),
+        "Valor Futuro (MXN)": [f"{vf:.2f}" for vf in valores_futuros_anualidad]
+    })
 
-# Mostrar tabla en Streamlit
-st.write("### Crecimiento de la inversión por anualidades vencidas")
-st.dataframe(tabla_resultados)
+    # Mostrar tabla en Streamlit
+    st.write("### Crecimiento de la inversión por anualidades vencidas")
+    st.dataframe(tabla_resultados)
 
-# Gráfica de crecimiento
-plt.figure(figsize=(10, 6))
-plt.plot(range(1, meses + 1), valores_futuros_anualidad, marker="o", color="green")
-plt.title("Proyección de Inversión con Anualidades Vencidas", fontsize=16)
-plt.xlabel("Meses", fontsize=12)
-plt.ylabel("Valor Futuro (MXN)", fontsize=12)
-plt.grid(True, linestyle="--", alpha=0.7)
-st.pyplot(plt)
+    # Gráfica de crecimiento
+    plt.figure(figsize=(10, 6))
+    plt.plot(range(1, meses + 1), valores_futuros_anualidad, marker="o", color="green")
+    plt.title("Proyección de Inversión con Anualidades Vencidas", fontsize=16)
+    plt.xlabel("Meses", fontsize=12)
+    plt.ylabel("Valor Futuro (MXN)", fontsize=12)
+    plt.grid(True, linestyle="--", alpha=0.7)
+    st.pyplot(plt)
 
 
     # Planeación de proyectos personales
